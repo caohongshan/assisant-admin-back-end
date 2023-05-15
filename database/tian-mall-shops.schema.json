@@ -1,0 +1,403 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": "'tian-mall-shops' in auth.permission",
+		"update": "'tian-mall-shops' in auth.permission",
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"id": {
+			"bsonType": "int",
+			"description": "ID，系统自动生成",
+			"title": "编号"
+		},
+		"address": {
+			"bsonType": "object",
+			"title": "地址",
+			"properties": {
+				"name": {
+					"bsonType": "string",
+					"title": "地址名称",
+					"description": ""
+				},
+				"address": {
+					"bsonType": "string",
+					"title": "详细地址",
+					"description": ""
+				},
+				"latitude": {
+					"bsonType": "double",
+					"title": "维度",
+					"description": ""
+				},
+				"longitude": {
+					"bsonType": "double",
+					"title": "经度",
+					"description": ""
+				},
+				"location": {
+					"bsonType": "object",
+					"title": "位置",
+					"description": ""
+				}
+			}
+		},
+		"banner": {
+			"bsonType": "string",
+			"title": "banner",
+			"description": ""
+		},
+		"delivery": {
+			"bsonType": "object",
+			"title": "配送方式",
+			"properties": {
+				"deliveryDay": {
+					"bsonType": "int",
+					"title": "最多可预订天数",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"deliveryPeriod": {
+					"bsonType": "array",
+					"title": "每日预定时段",
+					"properties": {
+						"begin": {
+							"bsonType": "int",
+							"title": "开始秒数"
+						},
+						"end": {
+							"bsonType": "int",
+							"title": "结束秒数"
+						}
+					}
+				},
+				"freeMoney": {
+					"bsonType": "int",
+					"title": "满金额免运费",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"maxDistance": {
+					"bsonType": "int",
+					"title": "最远服务里程km",
+					"minimum": 1,
+					"maximum": 1000
+				},
+				"minDistance": {
+					"bsonType": "int",
+					"title": "服务里程",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"minPrice": {
+					"bsonType": "int",
+					"title": "起送金额",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"money": {
+					"bsonType": "double",
+					"title": "不满起送金额运费",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"perMoney": {
+					"bsonType": "double",
+					"title": "超里程费",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"time": {
+					"bsonType": "int",
+					"title": "预计送达时间",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"timeStep": {
+					"bsonType": "string",
+					"title": "时段步长",
+					"defaultValue": "1800",
+					"enum": [{
+						"text": "半小时",
+						"value": "1800"
+					}, {
+						"text": "1小时",
+						"value": "3600"
+					}]
+				}
+			}
+		},
+		"deliveryTypes": {
+			"bsonType": "array",
+			"title": "配送方式",
+			"defaultValue": "deliveryHome",
+			"enum": [{
+				"text": "配送到家",
+				"value": "deliveryHome"
+			}, {
+				"text": "快递",
+				"value": "express"
+			}, {
+				"text": "到店\/自提点自提",
+				"value": "selfRaising"
+			}]
+		},
+		"isPrint": {
+			"bsonType": "bool",
+			"title": "是否开启打印",
+			"description": ""
+		},
+		"month_sell": {
+			"bsonType": "int",
+			"title": "月售",
+			"description": "近30天销售"
+		},
+		"focus": {
+			"bsonType": "int",
+			"title": "关注数量",
+			"description": ""
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "店铺名称",
+			"description": ""
+		},
+		"online": {
+			"bsonType": "bool",
+			"title": "是否营业",
+			"description": ""
+		},
+		"phone": {
+			"bsonType": "string",
+			"title": "联系电话",
+			"description": ""
+		},
+		"score": {
+			"bsonType": "double",
+			"title": "评分",
+			"description": ""
+		},
+		"serviceTime": {
+			"bsonType": "string",
+			"title": "服务时间",
+			"description": ""
+		},
+		"src": {
+			"bsonType": "string",
+			"title": "店铺logo",
+			"description": ""
+		},
+		"uid": {
+			"bsonType": "string",
+			"title": "创建者",
+			"description": "",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"dcloud_appid": {
+			"bsonType": "string",
+			"title": "应用id",
+			"foreignKey": "opendb-app-list.appid",
+			"description": "dcloud应用id"
+		},
+		"employees": {
+			"bsonType": "array",
+			"title": "员工列表",
+			"description": "",
+			"foreignKey": "uni-id-users._id"
+		},
+		"customer_service": {
+			"bsonType": "array",
+			"title": "客服列表",
+			"description": "",
+			"foreignKey": "uni-id-users._id"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"state": {
+			"bsonType": "bool",
+			"title": "是否启用"
+		},
+		"dayStatisticsLog": {
+			"bsonType": "string",
+			"title": "统计日期"
+		},
+		"goods": {
+			"bsonType": "object",
+			"title": "商品统计"
+		},
+		"order": {
+			"bsonType": "object",
+			"title": "订单统计"
+		},
+		"printers": {
+			"bsonType": "array",
+			"title": "打印机"
+		},
+		"qr_code_payment": {
+			"bsonType": "string",
+			"title": "二维码收款配置"
+		},
+		"mall_payment": {
+			"bsonType": "string",
+			"title": "商城配置"
+		},
+		"payments": {
+			"bsonType": "string",
+			"title": "支付配置"
+		},
+		"payment_types": {
+			"bsonType": "array",
+			"title": "支付类型"
+		},
+		"business_license": {
+			"bsonType": "string",
+			"title": "营业执照",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "business_license",
+					"v-model": "formData.business_license"
+				}
+			}
+		},
+		"food_license": {
+			"bsonType": "string",
+			"title": "食品经营许可",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "food_license",
+					"v-model": "formData.food_license"
+				}
+			}
+		},
+		"legal_person_license": {
+			"bsonType": "string",
+			"title": "法人身份证正面",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "legal_person_license",
+					"v-model": "formData.legal_person_license"
+				}
+			}
+		},
+		"legal_person_license_back": {
+			"bsonType": "string",
+			"title": "法人身份证反面",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "legal_person_license_back",
+					"v-model": "formData.legal_person_license_back"
+				}
+			}
+		},
+		"page_id": {
+			"bsonType": "string",
+			"title": "页面id",
+			"description": ""
+		},
+		"business_code": {
+			"bsonType": "string",
+			"title": "微信支付申请id",
+			"description": ""
+		},
+		"apply_result": {
+			"bsonType": "string",
+			"title": "审核结果",
+			"description": ""
+		},
+		"apply_id": {
+			"bsonType": "string",
+			"title": "申请id",
+			"description": ""
+		},
+		"bank_card": {
+			"bsonType": "string",
+			"title": "收款银行卡",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "bank_card",
+					"v-model": "formData.bank_card"
+				}
+			}
+		},
+		"bank_no": {
+			"bsonType": "string",
+			"title": "银行卡号",
+			"description": ""
+		},
+		"bank_deposit": {
+			"bsonType": "string",
+			"title": "银行卡开户行",
+			"description": ""
+		},
+		"food_menu": {
+			"bsonType": "array",
+			"title": "菜单/食谱",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "food_menu",
+					"v-model": "formData.food_menu"
+				}
+			}
+		},
+		"store_face": {
+			"bsonType": "string",
+			"title": "门店门脸照片",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "store_face",
+					"v-model": "formData.store_face"
+				}
+			}
+		},
+		"store_imgs": {
+			"bsonType": "string",
+			"title": "门店内部照片",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "store_imgs",
+					"v-model": "formData.store_imgs"
+				}
+			}
+		},
+		"refund_address": {
+			"bsonType": "object",
+			"title": "退换货地址"
+		}
+	}
+}

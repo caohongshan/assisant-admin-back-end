@@ -1,0 +1,154 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"description": "红包",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "标题",
+			"defaultValue": "送您一个红包"
+		},
+		"blessing": {
+			"bsonType": "string",
+			"title": "祝福语",
+			"defaultValue": "恭喜发财"
+		},
+		"open": {
+			"bsonType": "string",
+			"title": "打开词",
+			"defaultValue": "開"
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "类型",
+			"defaultValue": "newpeople",
+			"enum": [{
+				"text": "新人注册",
+				"value": "newpeople"
+			}, {
+				"text": "小区圈发帖",
+				"value": "addcircle"
+			}]
+		},
+		"payment": {
+			"bsonType": "string",
+			"title": "支付方式",
+			"defaultValue": "balance",
+			"enum": [{
+				"text": "余额",
+				"value": "balance"
+			}, {
+				"text": "微信",
+				"value": "wxpay"
+			}, {
+				"text": "支付宝",
+				"value": "alipay"
+			}]
+		},
+		"position": {
+			"bsonType": "string",
+			"title": "展示位置",
+			"defaultValue": "leftTop",
+			"enum": [{
+				"text": "左上",
+				"value": "leftTop"
+			}, {
+				"text": "左下",
+				"value": "leftDown"
+			}, {
+				"text": "右上",
+				"value": "rightTop"
+			}, {
+				"text": "右下",
+				"value": "rightDown"
+			}]
+		},
+		"auto_show": {
+			"bsonType": "bool",
+			"defaultValue": true,
+			"title": "自动展示"
+		},
+		"status": {
+			"bsonType": "bool",
+			"defaultValue": true,
+			"title": "生效状态"
+		},
+		"background": {
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"title": "红包背景"
+		},
+		"avatar": {
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"title": "默认头像"
+		},
+		"dcloud_appid": {
+			"bsonType": "string",
+			"title": "应用id",
+			"foreignKey": "opendb-app-list.appid",
+			"description": "dcloud应用id",
+			"enum": {
+				"collection": "opendb-app-list",
+				"field": "appid as value, name as text"
+			}
+		},
+		"platforms": {
+			"bsonType": "array",
+			"title": "平台",
+			"defaultValue": "",
+			"enum": {
+				"collection": "tian-platforms",
+				"field": "text,value"
+			},
+			"foreignKey": "tian-platforms.value"
+		},
+		"stock": {
+			"bsonType": "int",
+			"defaultValue": 100,
+			"title": "限定数量"
+		},
+		"total_money": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"title": "领取总金额"
+		},
+		"get_count": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"title": "已领取"
+		},
+		"get_limit": {
+			"bsonType": "int",
+			"defaultValue": 1,
+			"title": "领取限制"
+		},
+		"moneys": {
+			"bsonType": "string",
+			"title": "领取金额",
+			"description": "英文逗号隔开"
+		},
+		"update_date": {
+			"bsonType": "timestamp",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "商品每日销量统计，付款为准",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"day": {
+			"bsonType": "timestamp",
+			"title": "日期时间戳"
+		},
+		"goods": {
+			"bsonType": "object",
+			"title": "商品列表id=>值"
+		}
+	}
+}

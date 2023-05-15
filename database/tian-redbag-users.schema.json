@@ -1,0 +1,85 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"description": "用户领取红包记录",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"dcloud_appid": {
+			"bsonType": "string",
+			"title": "应用id",
+			"foreignKey": "opendb-app-list.appid",
+			"description": "dcloud应用id",
+			"enum": {
+				"collection": "opendb-app-list",
+				"field": "appid as value, name as text"
+			}
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id"
+		},
+		"user": {
+			"bsonType": "object"
+		},
+		"wxpay": {
+			"bsonType": "object"
+		},
+		"redbag_id": {
+			"bsonType": "string",
+			"title": "红包id",
+			"foreignKey": "tian-redbag._id"
+		},
+		"payment": {
+			"bsonType": "string",
+			"title": "支付方式",
+			"defaultValue": "balance",
+			"enum": [{
+				"text": "余额",
+				"value": "balance"
+			}, {
+				"text": "微信",
+				"value": "wxpay"
+			}, {
+				"text": "支付宝",
+				"value": "alipay"
+			}]
+		},
+		"money": {
+			"bsonType": "int",
+			"title": "金额"
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "类型",
+			"defaultValue": "newpeople",
+			"enum": [{
+				"text": "新人注册",
+				"value": "newpeople"
+			}, {
+				"text": "小区圈发帖",
+				"value": "addcircle"
+			}]
+		},
+		"type_text": {
+			"bsonType": "string",
+			"title": "类型"
+		},
+		"update_date": {
+			"bsonType": "timestamp"
+		},
+		"create_date": {
+			"bsonType": "timestamp"
+		}
+	}
+}

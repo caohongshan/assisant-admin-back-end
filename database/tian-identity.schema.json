@@ -1,0 +1,86 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "编号生成",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": "doc.user_id == auth.uid",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"key": {
+			"bsonType": "string",
+			"title": "关键字"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "名称"
+		},
+		"value": {
+			"bsonType": "int",
+			"title": "值"
+		},
+		"data": {
+			"bsonType": "string",
+			"title": "内容"
+		},
+		"dataType": {
+			"bsonType": "string",
+			"title": "data数据类型"
+		},
+		"options": {
+			"bsonType": "string",
+			"title": "选项"
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "类型"
+		},
+		"description": {
+			"bsonType": "string",
+			"title": "说明"
+		},
+		"is_key_value": {
+			"bsonType": "bool",
+			"title": "键值对"
+		},
+		"dcloud_appid": {
+			"bsonType": "array",
+			"title": "客户端",
+			"foreignKey": "opendb-app-list.appid",
+			"enum": {
+				"collection": "opendb-app-list",
+				"orderby": "appid asc",
+				"field": "appid as value, name as text"
+			}
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"update_date": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

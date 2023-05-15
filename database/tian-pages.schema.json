@@ -1,0 +1,124 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "自定义页面配置",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": "'shop-layout' in auth.permission",
+		"update": "'shop-layout' in auth.permission",
+		"delete": "'admin' in auth.role"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"begin_time": {
+			"bsonType": "timestamp",
+			"title": "页面生效时间"
+		},
+		"begin_hours": {
+			"bsonType": "int",
+			"title": "生效小时",
+			"description": "可选择0-23"
+		},
+		"operater": {
+			"bsonType": "string",
+			"title": "操作员",
+			"description": "操作员",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"component": {
+			"bsonType": "string",
+			"title": "组件类型",
+			"foreignKey": "tian-page-components.component_id",
+			"enum": {
+				"collection": "tian-page-components",
+				"field": "posid,title as text, component_id as value",
+				"where": "state==1",
+				"orderby": "posid asc"
+			}
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "页面标题"
+		},
+		"city": {
+			"bsonType": "string",
+			"title": "城市编号",
+			"defaultValue": "",
+			"foreignKey": "opendb-city-china.code",
+			"description": "市/区县编号，区县必须在城市管理内是推荐，否则前端无法定位到"
+		},
+		"items": {
+			"bsonType": "array",
+			"title": "静态数据",
+			"description": "静态数据"
+		},
+		"configs": {
+			"bsonType": "object",
+			"title": "配置",
+			"description": "默认数据"
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "是否显示",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "否",
+				"value": 0
+			}, {
+				"text": "是",
+				"value": 1
+			}]
+		},
+		"posid": {
+			"bsonType": "int",
+			"title": "排序，正序",
+			"defaultValue": 0
+		},
+		"parent_id": {
+			"bsonType": "string",
+			"title": "父id",
+			"defaultValue": "",
+			"description": "父id",
+			"parentKey": "_id"
+		},
+		"app_id": {
+			"bsonType": "array",
+			"title": "应用",
+			"enum": {
+				"collection": "opendb-app-list",
+				"field": "name as text, appid as value"
+			},
+			"foreignKey": "opendb-app-list.appid"
+		},
+		"platforms": {
+			"bsonType": "array",
+			"title": "平台",
+			"defaultValue": "",
+			"enum": {
+				"collection": "tian-platforms",
+				"field": "text,value"
+			},
+			"foreignKey": "tian-platforms.value"
+		}
+	}
+}

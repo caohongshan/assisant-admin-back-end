@@ -1,0 +1,10 @@
+{
+  "name": "uni-stat-receiver",
+  "dependencies": {
+    "uni-id": "file:../../../uni_modules/uni-id/uniCloud/cloudfunctions/common/uni-id",
+    "uni-stat": "file:../common/uni-stat"
+  },
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

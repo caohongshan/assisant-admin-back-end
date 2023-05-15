@@ -1,0 +1,132 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "整点秒杀商品，定时器生成临时数据",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": "'tian-mall-hour-miaosha-goods' in auth.permission",
+		"delete": "'tian-mall-hour-miaosha-goods' in auth.permission"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"miaosha_id": {
+			"bsonType": "string",
+			"title": "秒杀场次",
+			"foreignKey": "tian-mall-hour-miaosha._id"
+		},
+		"miaosha": {
+			"bsonType": "object",
+			"title": "秒杀信息"
+		},
+		"shop_id": {
+			"bsonType": "string",
+			"title": "店铺",
+			"foreignKey": "tian-mall-shops._id"
+		},
+		"goods_id": {
+			"bsonType": "string",
+			"title": "商品",
+			"foreignKey": "opendb-mall-goods._id"
+		},
+		"goods": {
+			"bsonType": "object",
+			"title": "商品信息"
+		},
+		"sku_id": {
+			"bsonType": "string",
+			"title": "商品规格",
+			"description": "如果不选择规格，则代表所有都享受折扣",
+			"foreignKey": "opendb-mall-sku._id"
+		},
+		"sku": {
+			"bsonType": "object",
+			"title": "商品规格"
+		},
+		"posid": {
+			"bsonType": "int",
+			"title": "排序，正序",
+			"defaultValue": 0
+		},
+		"discount": {
+			"bsonType": "int",
+			"title": "折扣",
+			"defaultValue": 80,
+			"minimum": 1,
+			"maximum": 99
+		},
+		"price": {
+			"bsonType": "int",
+			"title": "价格"
+		},
+		"market_price": {
+			"bsonType": "int",
+			"title": "原价"
+		},
+		"is_limit": {
+			"bsonType": "bool",
+			"title": "是否限购",
+			"defaultValue": false
+		},
+		"limit_stock": {
+			"bsonType": "int",
+			"title": "总库存",
+			"description": "0不限制",
+			"defaultValue": 0
+		},
+		"sale_count": {
+			"bsonType": "int",
+			"title": "已售"
+		},
+		"limit_order_count": {
+			"bsonType": "int",
+			"title": "订单限购数量",
+			"defaultValue": 0
+		},
+		"limit_user_count": {
+			"bsonType": "int",
+			"title": "用户限购数量",
+			"defaultValue": 0
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "状态",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "审核中",
+				"value": 0
+			}, {
+				"text": "已发布",
+				"value": 1
+			}, {
+				"text": "拒绝",
+				"value": 2
+			}]
+		},
+		"begin_time": {
+			"bsonType": "timestamp",
+			"title": "开始时间戳"
+		},
+		"end_time": {
+			"bsonType": "timestamp",
+			"title": "结束时间戳"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

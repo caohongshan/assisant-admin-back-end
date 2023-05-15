@@ -1,0 +1,20 @@
+{
+  "name": "tiantian-qr-image",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "cloudfunction-config": {
+  	"memorySize": 256,
+  	"path": "/http/qrcode",
+  	"timeout": 200
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "qr-image": "^3.2.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "tiantian-mall-miaosha",
+  "dependencies": {},
+  "cloudfunction-config": {
+    "memorySize": 128,
+    "timeout": 5,
+    "runtime": "Nodejs8",
+    "triggers": [
+      {
+        "config": "40 50 * * * * *",
+        "name": "refund",
+        "type": "timer"
+      }
+    ]
+  },
+  "extensions": {
+    "uni-cloud-redis": {}
+  }
+}

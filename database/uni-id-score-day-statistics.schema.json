@@ -1,0 +1,46 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"day": {
+			"bsonType": "timestamp",
+			"title": "日期时间戳"
+		},
+		"value": {
+			"bsonType": "double",
+			"title": "值"
+		},
+		"money": {
+			"bsonType": "int",
+			"title": "分红金额，单位分",
+			"description": "录入启用后，不允许修改"
+		},
+		"open_time": {
+			"bsonType": "timestamp",
+			"title": "开启时间"
+		},
+		"status": {
+			"bsonType": "int",
+			"description": "开放状态：0 禁用 1启用",
+			"title": "开放状态",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "禁用",
+				"value": 0
+			}, {
+				"text": "启用",
+				"value": 1
+			}]
+		}
+	}
+}

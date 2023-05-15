@@ -1,0 +1,47 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "积分兑换现金",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "申请人",
+			"description": "用户id，参考uni-id-users表",
+			"foreignKey": "uni-id-users._id"
+		},
+		"amount": {
+			"bsonType": "int",
+			"title": "数量"
+		},
+		"balance": {
+			"bsonType": "int",
+			"title": "余额"
+		},
+		"service": {
+			"bsonType": "double",
+			"title": "手续费"
+		},
+		"money": {
+			"bsonType": "int",
+			"title": "金额",
+			"trim": "both"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"title": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

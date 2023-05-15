@@ -1,0 +1,59 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "企业名",
+			"description": "企业名",
+			"trim": "both"
+		},
+		"code": {
+			"bsonType": "string",
+			"title": "企业代码",
+			"description": "企业代码",
+			"trim": "both"
+		},
+		"code_type": {
+			"bsonType": "int",
+			"defaultValue": 1,
+			"title": "企业代码类型",
+			"description": "企业代码类型（1：统一社会信用代码， 2：组织机构代码，3：营业执照注册号）"
+		},
+		"legal_persona_wechat": {
+			"bsonType": "string",
+			"title": "法人微信",
+			"description": "法人微信",
+			"trim": "both"
+		},
+		"legal_persona_name": {
+			"bsonType": "string",
+			"title": "法人姓名",
+			"description": "法人姓名",
+			"trim": "both"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"updated": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

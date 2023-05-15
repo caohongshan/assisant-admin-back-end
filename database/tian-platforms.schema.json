@@ -1,0 +1,28 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"sort": {
+			"bsonType": "int",
+			"title": "排序，正序"
+		},
+		"text": {
+			"bsonType": "string",
+			"title": "显示名字"
+		},
+		"value": {
+			"bsonType": "string",
+			"title": "值"
+		}
+	}
+}

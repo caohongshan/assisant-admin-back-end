@@ -1,0 +1,85 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": "doc.user_id == auth.uid",
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"total_fee": {
+			"bsonType": "int",
+			"title": "付款金额"
+		},
+		"rebate": {
+			"bsonType": "int",
+			"title": "返利金额"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户"
+		},
+		"shop_id": {
+			"bsonType": "string",
+			"title": "店铺"
+		},
+		"src": {
+			"bsonType": "string",
+			"title": "logo"
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "标题"
+		},
+		"body": {
+			"bsonType": "string",
+			"title": "内容"
+		},
+		"outTradeNo": {
+			"bsonType": "string",
+			"title": "支付订单号"
+		},
+		"shop": {
+			"bsonType": "object",
+			"title": "商户信息"
+		},
+		"payment": {
+			"bsonType": "object",
+			"title": "商户支付配置"
+		},
+		"payInfo": {
+			"bsonType": "object",
+			"title": "支付信息"
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "状态",
+			"description": "用户性别：0 未付款，1已付款",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "未付款",
+				"value": 0
+			}, {
+				"text": "已付款",
+				"value": 1
+			}]
+		},
+		"id": {
+			"bsonType": "int",
+			"title": "订单id"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"description": "创建时间戳"
+		},
+		"update_time": {
+			"bsonType": "timestamp",
+			"description": "更新时间"
+		}
+	}
+}

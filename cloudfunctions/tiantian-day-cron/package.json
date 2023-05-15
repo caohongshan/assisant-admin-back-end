@@ -1,0 +1,26 @@
+{
+  "name": "tiantian-day-cron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uni-config-center": "file:../../../uni_modules/uni-config-center/uniCloud/cloudfunctions/common/uni-config-center"
+  },
+  "cloudfunction-config": {
+    "memorySize": 256,
+    "timeout": 200,
+    "triggers": [
+      {
+        "config": "50 50 23 * * * *",
+        "name": "days",
+        "type": "timer"
+      }
+    ]
+  },
+  "extensions": {}
+}

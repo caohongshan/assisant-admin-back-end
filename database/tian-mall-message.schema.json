@@ -1,0 +1,55 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"description": "消息中心",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": "doc.user_id == auth.uid",
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "类型",
+			"description": "包含：system,platform,coupons,order,charge"
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "标题",
+			"description": ""
+		},
+		"note": {
+			"bsonType": "string",
+			"title": "说明",
+			"description": ""
+		},
+		"read": {
+			"bsonType": "bool",
+			"title": "是否已读",
+			"defaultValue": false
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "用户id，参考uni-id-users表",
+			"foreignKey": "uni-id-users._id"
+		},
+		"user": {
+			"bsonType": "object",
+			"title": "用户信息",
+			"description": "用户信息，避免关联查询"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+
+	}
+}

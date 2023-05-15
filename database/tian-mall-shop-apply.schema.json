@@ -1,0 +1,229 @@
+{
+	"bsonType": "object",
+	"required": ["name", "phone", "src", "business_license", "legal_person_license", "legal_person_license_back"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": "doc.uid==auth.uid || 'tian-mall-shop-apply' in auth.permission",
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"id": {
+			"bsonType": "int",
+			"description": "ID，系统自动生成",
+			"title": "编号"
+		},
+		"dcloud_appid": {
+			"bsonType": "string",
+			"title": "应用id",
+			"foreignKey": "opendb-app-list.appid",
+			"description": "dcloud应用id"
+		},
+		"address": {
+			"bsonType": "object",
+			"title": "地址",
+			"properties": {
+				"name": {
+					"bsonType": "string",
+					"title": "地址名称",
+					"description": ""
+				},
+				"address": {
+					"bsonType": "string",
+					"title": "详细地址",
+					"description": ""
+				},
+				"latitude": {
+					"bsonType": "double",
+					"title": "维度",
+					"description": ""
+				},
+				"longitude": {
+					"bsonType": "double",
+					"title": "经度",
+					"description": ""
+				},
+				"location": {
+					"bsonType": "object",
+					"title": "位置",
+					"description": ""
+				}
+			}
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "店铺名称",
+			"description": ""
+		},
+		"phone": {
+			"bsonType": "string",
+			"title": "联系电话",
+			"description": ""
+		},
+		"src": {
+			"bsonType": "string",
+			"title": "店铺logo",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "src",
+					"v-model": "formData.src"
+				}
+			}
+		},
+		"business_license": {
+			"bsonType": "string",
+			"title": "营业执照",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "business_license",
+					"v-model": "formData.business_license"
+				}
+			}
+		},
+		"food_license": {
+			"bsonType": "string",
+			"title": "食品经营许可",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "food_license",
+					"v-model": "formData.food_license"
+				}
+			}
+		},
+		"legal_person_license": {
+			"bsonType": "string",
+			"title": "法人身份证正面",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "legal_person_license",
+					"v-model": "formData.legal_person_license"
+				}
+			}
+		},
+		"legal_person_license_back": {
+			"bsonType": "string",
+			"title": "法人身份证反面",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "legal_person_license_back",
+					"v-model": "formData.legal_person_license_back"
+				}
+			}
+		},
+		"uid": {
+			"bsonType": "string",
+			"title": "创建者",
+			"description": "",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"apply_result": {
+			"bsonType": "string",
+			"title": "审核结果",
+			"description": ""
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "状态",
+			"description": "0审核中，1通过，2拒绝",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "审核中",
+				"value": 0
+			}, {
+				"text": "通过",
+				"value": 1
+			}, {
+				"text": "拒绝",
+				"value": 2
+			}]
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"bank_card": {
+			"bsonType": "string",
+			"title": "收款银行卡",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "bank_card",
+					"v-model": "formData.bank_card"
+				}
+			}
+		},
+		"bank_no": {
+			"bsonType": "string",
+			"title": "银行卡号",
+			"description": ""
+		},
+		"bank_deposit": {
+			"bsonType": "string",
+			"title": "银行卡开户行",
+			"description": ""
+		},
+		"food_menu": {
+			"bsonType": "array",
+			"title": "菜单/食谱",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "food_menu",
+					"v-model": "formData.food_menu"
+				}
+			}
+		},
+		"store_face": {
+			"bsonType": "string",
+			"title": "门店门脸照片",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "store_face",
+					"v-model": "formData.store_face"
+				}
+			}
+		},
+		"store_imgs": {
+			"bsonType": "string",
+			"title": "门店内部照片",
+			"description": "",
+			"component": {
+				"name": "cloud-image",
+				"props": {
+					"name": "store_imgs",
+					"v-model": "formData.store_imgs"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,97 @@
+{
+	"name": "订单退款信息",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": "doc.user_id == auth.uid && doc.state < 1",
+		"delete": "doc.user_id == auth.uid && doc.state < 1"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"description": "订单创建时间"
+		},
+		"update_time": {
+			"bsonType": "timestamp",
+			"description": "订单更新时间"
+		},
+		"operater_log": {
+			"bsonType": "array",
+			"title": "后台操作日志，0最新操作"
+		},
+		"id": {
+			"bsonType": "int",
+			"title": "编号"
+		},
+		"order_id": {
+			"bsonType": "string",
+			"title": "订单编号"
+		},
+		"goods": {
+			"bsonType": "object",
+			"title": "商品"
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "售后类型"
+		},
+		"reason": {
+			"bsonType": "string",
+			"title": "原因"
+		},
+		"goods_status": {
+			"bsonType": "string",
+			"title": "商品状态"
+		},
+		"shop_id": {
+			"bsonType": "string",
+			"title": "店铺id"
+		},
+		"shop": {
+			"bsonType": "object",
+			"title": "店铺信息"
+		},
+		"describe": {
+			"bsonType": "string",
+			"title": "描述"
+		},
+		"imgs": {
+			"bsonType": "array",
+			"title": "图片描述"
+		},
+		"money": {
+			"bsonType": "int",
+			"title": "退款金额，单位分"
+		},
+		"platform": {
+			"bsonType": "string",
+			"title": "操作平台"
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "退款状态",
+			"description": "0申请中，1同意退款，2退款成功，-1拒绝",
+			"permission": {
+				"read": true,
+				"create": false,
+				"update": false,
+				"delete": false
+			}
+		},
+		"result": {
+			"bsonType": "object",
+			"title": "退款结果"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id"
+		}
+	}
+}

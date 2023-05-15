@@ -1,0 +1,95 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "推广渠道",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": "doc.user_id==auth.uid",
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"id": {
+			"bsonType": "string",
+			"title": "渠道号",
+			"description": "5位数字，从10000起自增长，数字类型，局限性很大"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "渠道名称"
+		},
+		"total": {
+			"bsonType": "int",
+			"title": "总计"
+		},
+		"rebate_money_rate": {
+			"bsonType": "double",
+			"title": "返现比例"
+		},
+		"day_total": {
+			"bsonType": "object",
+			"description": "日期时间戳为key，数量累加",
+			"title": "每日总计"
+		},
+		"status": {
+			"bsonType": "int",
+			"description": "用户状态",
+			"title": "用户状态",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "未提交",
+				"value": 0
+			}, {
+				"text": "审核中",
+				"value": 1
+			}, {
+				"text": "通过",
+				"value": 2
+			}, {
+				"text": "审核拒绝",
+				"value": 3
+			}]
+		},
+		"mobile": {
+			"bsonType": "string",
+			"title": "联系电话"
+		},
+		"address": {
+			"bsonType": "object",
+			"title": "地址"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id",
+			"componentForEdit": {
+				"name": "cloud-user-select",
+				"props": {
+					"v-model": "formData.user_id"
+				}
+			},
+			"defaultValue": {
+				"$env": "uid"
+			}
+		}
+	}
+}

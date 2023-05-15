@@ -1,0 +1,187 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "用户领取的店铺优惠券",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"id": {
+			"bsonType": "string",
+			"title": "优惠券id",
+			"foreignKey": "tian-mall-coupons._id"
+		},
+		"begin_time": {
+			"bsonType": "timestamp",
+			"title": "开始时间戳"
+		},
+		"end_time": {
+			"bsonType": "timestamp",
+			"title": "结束时间戳"
+		},
+		"use_time": {
+			"bsonType": "timestamp",
+			"title": "使用时间戳"
+		},
+		"goods_ids": {
+			"bsonType": "array",
+			"title": "商品编号列表"
+		},
+		"category_id": {
+			"bsonType": "string",
+			"title": "分类编号"
+		},
+		"limit": {
+			"bsonType": "int",
+			"title": "限制领取张数",
+			"defaultValue": 1
+		},
+		"is_vip": {
+			"bsonType": "bool",
+			"title": "是否VIP",
+			"defaultValue": false
+		},
+		"stock": {
+			"bsonType": "int",
+			"title": "总库存",
+			"defaultValue": 100
+		},
+		"get_count": {
+			"bsonType": "int",
+			"title": "已领取",
+			"defaultValue": 0
+		},
+		"condition": {
+			"bsonType": "int",
+			"title": "满足条件",
+			"defaultValue": 10
+		},
+		"manjine": {
+			"bsonType": "object",
+			"title": "金额满减",
+			"properties": {
+				"amount": {
+					"bsonType": "double",
+					"title": "优惠金额",
+					"defaultValue": 1
+				},
+				"condition": {
+					"bsonType": "double",
+					"title": "条件",
+					"defaultValue": 10
+				}
+			}
+		},
+		"manshuliang": {
+			"bsonType": "object",
+			"title": "数量满减",
+			"properties": {
+				"amount": {
+					"bsonType": "double",
+					"title": "优惠金额",
+					"defaultValue": 1
+				},
+				"condition": {
+					"bsonType": "int",
+					"title": "条件",
+					"defaultValue": 10
+				}
+			}
+		},
+		"memo": {
+			"bsonType": "string",
+			"title": "说明"
+		},
+		"price": {
+			"bsonType": "int",
+			"title": "优惠金额",
+			"defaultValue": 1
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "状态",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "草稿箱",
+				"value": 0
+			}, {
+				"text": "已发布",
+				"value": 1
+			}, {
+				"text": "已停用",
+				"value": 2
+			}]
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "标题"
+		},
+		"today": {
+			"bsonType": "bool",
+			"title": "是否当日可用"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"type": {
+			"bsonType": "int",
+			"title": "类型",
+			"enum": [{
+				"text": "商品券",
+				"value": 1
+			}, {
+				"text": "分类券",
+				"value": 2
+			}, {
+				"text": "店铺券",
+				"value": 3
+			}]
+		},
+		"style": {
+			"bsonType": "string",
+			"title": "类型",
+			"enum": [{
+				"text": "满金额减",
+				"value": "manjine"
+			}, {
+				"text": "满数量减",
+				"value": "manshuliang"
+			}]
+		},
+		"dcloud_appid": {
+			"bsonType": "string",
+			"title": "应用id",
+			"foreignKey": "opendb-app-list.appid",
+			"description": "dcloud应用id"
+		},
+		"shop_id": {
+			"bsonType": "string",
+			"title": "店铺",
+			"foreignKey": "tian-mall-shops._id"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id"
+		}
+	}
+}

@@ -1,0 +1,94 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "自定义页面配置",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "上传时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"component_id": {
+			"bsonType": "string",
+			"title": "组件ID",
+			"description": "唯一标识，不可修改，不允许重复"
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "组件名称"
+		},
+		"previewfile": {
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"title": "预览图"
+		},
+		"thumb": {
+			"bsonType": "string",
+			"description": "缩略图，用于在列表或搜索结果中预览显示，200*150",
+			"title": "缩略图地址",
+			"pattern": "^(http:\/\/|https:\/\/|\/|.\/|@\/)\\S",
+			"trim": "both"
+		},
+		"thumb_size": {
+			"bsonType": "string",
+			"title": "缩略图尺寸",
+			"trim": "both"
+		},
+		"attributes": {
+			"bsonType": "string",
+			"description": "可用属性，结构参考schema",
+			"title": "属性配置"
+		},
+		"data": {
+			"bsonType": "object",
+			"description": "可用数据，结构参考schema",
+			"title": "数据配置"
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "是否显示",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "否",
+				"value": 0
+			}, {
+				"text": "是",
+				"value": 1
+			}]
+		},
+		"is_page": {
+			"bsonType": "bool",
+			"title": "是否页面",
+			"defaultValue": false
+		},
+		"shop_decoration": {
+			"bsonType": "bool",
+			"title": "店铺装修",
+			"defaultValue": false
+		},
+		"posid": {
+			"bsonType": "int",
+			"title": "排序，正序",
+			"defaultValue": 0
+		}
+	}
+}

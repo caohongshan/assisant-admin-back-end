@@ -1,0 +1,68 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "整点秒杀场次",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": "'tian-mall-hour-miaosha' in auth.permission",
+		"delete": "'tian-mall-hour-miaosha' in auth.permission"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "名称"
+		},
+		"description": {
+			"bsonType": "string",
+			"title": "描述"
+		},
+		"hour": {
+			"bsonType": "string",
+			"title": "小时"
+		},
+		"posid": {
+			"bsonType": "int",
+			"title": "排序，正序",
+			"defaultValue": 0
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "状态",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "已停用",
+				"value": 0
+			}, {
+				"text": "已发布",
+				"value": 1
+			}]
+		},
+		"begin_time": {
+			"bsonType": "timestamp",
+			"title": "开始时间戳"
+		},
+		"end_time": {
+			"bsonType": "timestamp",
+			"title": "结束时间戳"
+		},
+		"created": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

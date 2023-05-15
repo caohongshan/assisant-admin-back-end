@@ -1,0 +1,56 @@
+{
+	"bsonType": "object",
+	"required": ["user_id", "score", "balance"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "用户id，参考uni-id-users表",
+			"foreignKey": "uni-id-users._id"
+		},
+		"user": {
+			"bsonType": "object",
+			"title": "用户信息",
+			"description": "用户信息，避免关联查询"
+		},
+		"score": {
+			"bsonType": "int",
+			"description": "本次变化的积分"
+		},
+		"type": {
+			"bsonType": "int",
+			"enum": [{
+				"text": "收入",
+				"value": 1
+			}, {
+				"text": "支出",
+				"value": 2
+			}],
+			"description": "积分类型 1:收入 2:支出"
+		},
+		"balance": {
+			"bsonType": "int",
+			"description": "变化后的积分余额"
+		},
+		"comment": {
+			"bsonType": "string",
+			"description": "备注，说明积分新增、消费的缘由",
+			"trim": "both"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

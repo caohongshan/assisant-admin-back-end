@@ -1,0 +1,61 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": "doc.user_id == auth.uid",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"id": {
+			"bsonType": "string",
+			"title": "编号"
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "标题"
+		},
+		"avatar": {
+			"bsonType": "string",
+			"title": "封面图"
+		},
+		"description": {
+			"bsonType": "string",
+			"title": "简介"
+		},	
+		"price": {
+			"bsonType": "int",
+			"title": "价格"
+		},
+		"type": {
+			"bsonType": "string",
+			"description": "类型，goods/article，点击跳转不同页面"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "评论者的uid，参考 uni-id-users 表",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"update_date": {
+			"bsonType": "timestamp",
+			"description": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+{
+	"bsonType": "object",
+	"required": ["name"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "任务名称",
+			"title": "任务名称",
+			"trim": "both"
+		},
+		"comment": {
+			"bsonType": "string",
+			"description": "任务描述",
+			"title": "任务描述",
+			"trim": "both"
+		},
+		"bounty": {
+			"bsonType": "int",
+			"description": "任务完成后的奖励积分",
+			"title": "奖励积分"
+		},
+		"per_amount": {
+			"bsonType": "int",
+			"description": "操作多少次算完成任务",
+			"title": "操作次数",
+			"defaultValue": 1
+		},
+		"multiple": {
+			"bsonType": "int",
+			"description": "加倍倍数,0不能加倍，3获得3倍bounty",
+			"title": "加倍倍数",
+			"defaultValue": 0
+		},
+		"icon": {
+			"bsonType": "string",
+			"description": "图标",
+			"trim": "both"
+		},
+		"middle_getout": {
+			"bsonType": "bool",
+			"description": "中途退出"
+		},
+		"open_url": {
+			"bsonType": "string",
+			"description": "点击跳转目标地址。如果是web地址则使用内置web-view打开；如果是本地页面则跳转本地页面；如果是schema地址则打开本地的app,；::本地方法",
+			"title": "点击目标地址",
+			"trim": "both"
+		},
+		"sort": {
+			"bsonType": "int",
+			"title": "序号",
+			"description": "菜单序号（越大越靠后）"
+		},
+		"enable": {
+			"bsonType": "bool",
+			"title": "是否启用",
+			"description": "是否启用，true启用、false禁用"
+		},
+		"max_per_hour": {
+			"bsonType": "int",
+			"description": "每小时允许执行的最大次数"
+		},
+		"max_per_day": {
+			"bsonType": "int",
+			"description": "每天允许执行的最大次数"
+		},
+		"max_per_week": {
+			"bsonType": "int",
+			"description": "每周允许执行的最大次数"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

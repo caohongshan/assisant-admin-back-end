@@ -1,0 +1,32 @@
+{
+	"name": "用户在店铺的消费总计",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"shop_id": {
+			"bsonType": "string",
+			"title": "店铺",
+			"foreignKey": "tian-mall-shops._id"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "创建者",
+			"description": "",
+			"foreignKey": "uni-id-users._id",
+		},
+		"consumption": {
+			"bsonType": "int",
+			"title": "消费金额",
+			"description": "用户购物消费总金额，包含微信、支付宝、余额等支付"
+		},
+	}
+}

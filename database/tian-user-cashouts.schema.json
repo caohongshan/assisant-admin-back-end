@@ -1,0 +1,83 @@
+{
+	"name": "用户提现申请",
+	"bsonType": "object",
+	"required": ["user_id", "amount"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"description": "创建时间"
+		},
+		"update_time": {
+			"bsonType": "timestamp",
+			"description": "更新时间"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id"
+		},
+		"user": {
+			"bsonType": "object",
+			"title": "用户",
+			"description": "用户"
+		},
+		"payment": {
+			"bsonType": "object",
+			"title": "付款信息",
+			"description": "付款信息"
+		},
+		"amount": {
+			"bsonType": "int",
+			"title": "金额",
+			"description": "提现金额，单位分"
+		},
+		"balance": {
+			"bsonType": "int",
+			"title": "余额",
+			"description": "提现余额，单位分"
+		},
+		"status": {
+			"bsonType": "int",
+			"title": "状态",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "审核中",
+				"value": 0
+			}, {
+				"text": "通过",
+				"value": 1
+			}, {
+				"text": "拒绝",
+				"value": 2
+			}, {
+				"text": "通过不付款",
+				"value": 3
+			}]
+		},
+		"mode": {
+			"bsonType": "string",
+			"title": "提现方式",
+			"defaultValue": "wxpay",
+			"enum": [{
+				"text": "微信",
+				"value": "wxpay"
+			}, {
+				"text": "支付宝",
+				"value": "alipay"
+			}, {
+				"text": "银行卡",
+				"value": "bank"
+			}]
+		}
+	}
+}

@@ -1,0 +1,50 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"name": "积分转账",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "申请人",
+			"description": "用户id，参考uni-id-users表",
+			"foreignKey": "uni-id-users._id"
+		},
+		"get_user": {
+			"bsonType": "object"
+		},
+		"amount": {
+			"bsonType": "int",
+			"description": "本次变化的积分"
+		},
+		"balance": {
+			"bsonType": "int",
+			"description": "变化后的积分余额"
+		},
+		"service": {
+			"bsonType": "double",
+			"description": "手续费"
+		},
+		"mobile": {
+			"bsonType": "string",
+			"description": "手机号",
+			"trim": "both"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

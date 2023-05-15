@@ -1,0 +1,162 @@
+{
+	"name": "店铺信息",
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": "doc.user_id == auth.uid",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"description": "订单创建时间"
+		},
+		"update_time": {
+			"bsonType": "timestamp",
+			"description": "订单更新时间"
+		},
+		"operater_log": {
+			"bsonType": "array",
+			"title": "后台操作日志，0最新操作"
+		},
+		"address": {
+			"bsonType": "object",
+			"title": "用户收货地址"
+		},
+		"body": {
+			"bsonType": "string",
+			"title": "内容"
+		},
+		"cancel_apply": {
+			"bsonType": "array",
+			"title": "取消订单请求列表"
+		},
+		"cancel_style": {
+			"bsonType": "string",
+			"title": "取消类型",
+			"enum": [{
+				"text": "自动",
+				"value": "auto"
+			}, {
+				"text": "用户",
+				"value": "user"
+			}, {
+				"text": "商家",
+				"value": "shop"
+			}]
+		},
+		"cart_count": {
+			"bsonType": "int",
+			"title": "购物车数量"
+		},
+		"delivery_hour": {
+			"bsonType": "object",
+			"title": "配送时间"
+		},
+		"delivery_type": {
+			"bsonType": "string",
+			"title": "配送方式",
+			"enum": [{
+				"text": "配送到家",
+				"value": "get_home"
+			}, {
+				"text": "快递",
+				"value": "express"
+			}, {
+				"text": "到店\/自提点自提",
+				"value": "self_extraction"
+			}]
+		},
+		"freight": {
+			"bsonType": "double",
+			"title": "运费"
+		},
+		"goods": {
+			"bsonType": "array",
+			"title": "商品"
+		},
+		"is_delete": {
+			"bsonType": "int",
+			"title": "是否删除",
+			"defaultValue": 0,
+			"enum": [{
+				"text": "否",
+				"value": 0
+			}, {
+				"text": "是",
+				"value": 1
+			}]
+		},
+		"juli": {
+			"bsonType": "int",
+			"title": "距离，米"
+		},
+		"last_pay_time": {
+			"bsonType": "timestamp",
+			"title": "最后支付时间"
+		},
+		"platform": {
+			"bsonType": "string",
+			"title": "操作平台"
+		},
+		"remarks": {
+			"bsonType": "string",
+			"title": "备注"
+		},
+		"state": {
+			"bsonType": "int",
+			"title": "订单状态",
+			"permission": {
+				"read": true,
+				"create": false,
+				"update": false,
+				"delete": false
+			}
+		},
+		"discount": {
+			"bsonType": "int",
+			"title": "优惠金额",
+			"permission": {
+				"read": true,
+				"create": false,
+				"update": false,
+				"delete": false
+			}
+		},
+		"total_fee": {
+			"bsonType": "int",
+			"title": "订单总金额",
+			"permission": {
+				"read": true,
+				"create": false,
+				"update": false,
+				"delete": false
+			}
+		},
+		"invoice": {
+			"bsonType": "string",
+			"description": "发票"
+		},
+		"score": {
+			"bsonType": "int",
+			"title": "使用积分",
+			"permission": {
+				"read": true,
+				"create": false,
+				"update": false,
+				"delete": false
+			}
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户",
+			"description": "用户",
+			"foreignKey": "uni-id-users._id"
+		}
+	}
+}
